@@ -2,97 +2,81 @@ import React from "react";
 
 interface EventCardProps {
   title: string;
-  description: string;
-  image: string;
   date: string;
   location: string;
-  price: boolean;
+  price: string;
   host: string;
+  image: string;
 }
-
-//className="w-[640px] bg-gray-200/20 rounded-lg shadow-[0px_4px_24px_0px_rgba(202,202,202,0.20)] inline-flex justify-start items-start overflow-hidden">
 
 export default function EventCard({
   title,
-  description,
-  image,
   date,
   location,
   price,
   host,
+  image,
 }: EventCardProps) {
   return (
-    // <section className="self-stretch px-4 py-2 inline-flex flex-col justify-between items-start bg-[#595959] rounded-lg">
-    <section className="w-[640px] bg-gray-200/10 rounded-lg shadow-[0px_4px_24px_0px_rgba(202,202,202,0.20)] inline-flex justify-start items-start overflow-hidden">
-      <div className="flex-1 self-stretch px-4 py-2 inline-flex flex-col justify-between items-start">
-        <div className="self-stretch justify-start text-neutral-0 text-xl font-medium font-poppins leading-loose tracking-tight">
-          {title}
-        </div>
-        <div className="self-stretch inline-flex justify-start items-center gap-2">
-          <div
-            data-size="16px"
-            className="w-4 h-4 flex justify-center items-center"
+    <div className="flex overflow-hidden rounded-lg bg-[#464646] text-white bg-gray-200/10 rounded-lg inline-flex justify-start items-start overflow-hidden">
+      {/* Event Image */}
+      <div className="w-[196px] h-[196px]">
+        <img src={image} alt={title} className="h-full w-full object-cover" />
+      </div>
+
+      {/* Event Details */}
+      <div className="flex flex-1 flex-col gap-4 p-6">
+        {/* Title */}
+        <h3 className="text-3xl font-semibold leading-tight">{title}</h3>
+
+        {/* Date */}
+        <div className="flex items-center gap-4">
+          <svg
+            className="h-6 w-6 text-white"
+            fill="currentColor"
+            viewBox="0 0 24 24"
           >
-            <div
-              data-color="white"
-              data-type="calendar"
-              className="w-4 h-4 relative overflow-hidden"
-            >
-              <div className="w-3.5 h-3.5 left-[1.33px] top-[0.67px] absolute bg-neutral-0" />
-            </div>
-          </div>
-          <div className="flex-1 justify-start text-neutral-0 text-base font-normal font-poppins leading-normal tracking-tight">
-            {date}
-          </div>
+            <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM5 8V6h14v2H5zm2 4h10v2H7v-2zm0 4h7v2H7v-2z" />
+          </svg>
+          <span className="text-xl">{date}</span>
         </div>
-        <div className="self-stretch inline-flex justify-start items-center gap-2">
-          <div
-            data-size="16px"
-            className="w-4 h-4 flex justify-center items-center"
+
+        {/* Location */}
+        <div className="flex items-center gap-4">
+          <svg
+            className="h-6 w-6 text-white"
+            fill="currentColor"
+            viewBox="0 0 24 24"
           >
-            <div
-              data-color="white"
-              data-type="map-pin"
-              className="w-4 h-4 relative overflow-hidden"
-            >
-              <div className="w-3.5 h-4 left-[1.33px] top-0 absolute bg-neutral-0" />
-            </div>
-          </div>
-          <div className="flex-1 justify-start text-neutral-0 text-base font-normal font-poppins leading-normal tracking-tight">
-            {location}
-          </div>
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z" />
+          </svg>
+          <span className="text-xl">{location}</span>
         </div>
-        <div className="inline-flex justify-start items-center gap-2">
-          <div
-            data-shape="square"
-            data-size="16"
-            className="w-4 h-4 relative rounded-sm overflow-hidden"
+
+        {/* Price */}
+        <div className="flex items-center gap-4">
+          <svg
+            className="h-6 w-6 text-white"
+            fill="currentColor"
+            viewBox="0 0 24 24"
           >
-            <div
-              data-number="1"
-              data-type="club"
-              className="w-4 h-4 left-0 top-0 absolute bg-neutral-0 overflow-hidden"
-            >
-              <img
-                className="w-4 h-4 left-0 top-0 absolute"
-                src="https://placehold.co/16x16"
-              />
-            </div>
-          </div>
-          <div className="justify-start text-neutral-0 text-base font-normal font-poppins leading-normal tracking-tight">
-            {host}
-          </div>
-          <div className="justify-start text-neutral-0 text-base font-normal font-poppins leading-normal tracking-tight">
-            {price}
-          </div>
-          <div className="justify-start text-neutral-0 text-base font-normal font-poppins leading-normal tracking-tight">
-            {description}
-          </div>
-          <div className="justify-start text-neutral-0 text-base font-normal font-poppins leading-normal tracking-tight">
-            {image}
-          </div>
+            <path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58s1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41s-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z" />
+          </svg>
+          <span className="text-xl">{price}</span>
+        </div>
+
+        {/* Host */}
+        <div className="flex items-center gap-4">
+          <svg
+            className="h-6 w-6 text-white"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
+          </svg>
+          <span className="text-xl">{host}</span>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
