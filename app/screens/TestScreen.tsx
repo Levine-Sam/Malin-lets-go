@@ -1,10 +1,11 @@
 import React from "react";
-import EventCard from "../components/ui/EventCard";
-
+// import EventCard from "../components/ui/EventCard";
+import DatePickerComponent from "../components/ui/DatePickerComponent";
 export default function TestScreen() {
   return (
-    <div className="h-screen w-screen bg-[#333333]">
-      <EventCard
+    // <div className="h-screen w-screen bg-[#333333]">
+    <div className="h-screen w-screen bg-[]">
+      {/* <EventCard
         title="Event Name Placeholder"
         image="Event Image Placeholder"
         date="Event Date Placeholder"
@@ -12,7 +13,8 @@ export default function TestScreen() {
         price="Event Price Placeholder"
         host="Event Host Placeholder"
         hostImage="Event Host Image Placeholder"
-      />
+      /> */}
+      <DatePickerComponent />
     </div>
   );
 }
