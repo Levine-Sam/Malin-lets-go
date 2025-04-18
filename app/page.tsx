@@ -1,10 +1,9 @@
-"use client";
-// import Homepage from "./screens/Hompage";
-import TestScreen from "./screens/TestScreen";
-export default function Home() {
+import { Button } from "@heroui/button";
+
+export default function App() {
   return (
-    <div>
-      <TestScreen />
+    <div className="flex min-h-screen items-center justify-center p-6">
+      <Button color="danger">Button</Button>
     </div>
   );
 }
