@@ -1,7 +1,6 @@
 import React from "react";
-import EventCard from "../components/ui/EventCard";
-import DateTimePickerComponent from "../components/ui/DateTimePickerComponent";
-
+import EventTimeCard from "../components/admin/EventTimeCard";
+import AutocompleteCard from "../components/admin/AutocompleteCard";
 export default function TestScreen() {
   return (
     <div className="h-screen w-screen bg-[#333333]">
@@ -15,11 +14,10 @@ export default function TestScreen() {
           host="Event Host Placeholder"
           hostImage="Event Host Image Placeholder"
         />
-      </div> */}
-      <div className="flex flex-col items-center justify-center h-full bg-white">
-        <h1 className="text-2xl font-bold">Select Date and Time</h1>
-        <DateTimePickerComponent />
-      </div>
+        </div> */}
+
+      <EventTimeCard />
+      <AutocompleteCard />
     </div>
   );
 }

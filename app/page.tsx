@@ -1,9 +1,5 @@
-import { Button } from "@heroui/button";
-
+"use client";
+import TestScreen from "./screens/TestScreen";
 export default function App() {
-  return (
-    <div className="flex min-h-screen items-center justify-center p-6">
-      <Button color="danger">Button</Button>
-    </div>
-  );
+  return <TestScreen />;
 }
