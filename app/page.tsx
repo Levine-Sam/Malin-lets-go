@@ -1,5 +1,5 @@
 "use client";
-import TestScreen from "./screens/TestScreen";
+import CardScreen from "./screens/cardScreen";
 export default function App() {
-  return <TestScreen />;
+  return <CardScreen />;
 }
