@@ -51,12 +51,22 @@ export default function EventTimeCard() {
         }
         .date-picker-container :global(.heroui-datepicker) {
           width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
         }
-        .date-picker-container :global(.heroui-datepicker > div) {
-          width: 100%;
+        .date-picker-container :global(.heroui-datepicker label) {
+          color: #a0aec0;
+          flex-shrink: 0;
         }
-        .date-picker-container :global(input) {
-          width: 100%;
+        .date-picker-container :global(.heroui-datepicker > div:last-child) {
+          flex-grow: 1;
+          display: flex;
+          justify-content: flex-end;
+          gap: 0.5rem;
+        }
+        .date-picker-container :global(.heroui-datepicker input) {
+          text-align: right;
         }
       `}</style>
     </div>

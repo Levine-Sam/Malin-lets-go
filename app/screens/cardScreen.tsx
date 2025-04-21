@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@heroui/react";
-
+import EventTimeCard from "../components/admin/EventTimeCard";
 export default function CardScreen() {
   // Empty dependency array ensures this runs only on mount and unmount
 
@@ -46,6 +46,7 @@ export default function CardScreen() {
             <div className="self-stretch text-neutral-100 text-5xl font-medium font-['Poppins'] leading-[72px] tracking-wide">
               Event Name
             </div>
+            <EventTimeCard />
           </div>
         </div>
       </div>
