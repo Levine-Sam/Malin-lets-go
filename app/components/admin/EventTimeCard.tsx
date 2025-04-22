@@ -1,74 +1,53 @@
+// EventTimeCard.tsx
+
 import React from "react";
 import DateTimePickerComponent from "../ui/DateTimePickerComponent";
-import { getLocalTimeZone, today } from "@internationalized/date";
+import { getLocalTimeZone, now } from "@internationalized/date";
+import { Calendar } from "lucide-react"; // or your preferred SVG icon
 
 export default function EventTimeCard() {
+  const tz = getLocalTimeZone();
+  const currentDateTime = now(tz);
+
   return (
-    <div>
-      <div className="self-stretch p-4 bg-gray-200/10 rounded-3xl inline-flex flex-col justify-start items-start gap-2">
-        <div className="inline-flex justify-start items-start gap-2 flex-col w-full">
-          <div className="py-0.5 flex justify-start items-center gap-2">
-            <img src="/icons/icon.svg" alt="close" />
-            <h2 className="justify-start text-white text-base font-medium font-['Poppins'] leading-normal tracking-tight">
-              Event Time
-            </h2>
-          </div>
-          <div className="inline-flex justify-start items-start gap-2 w-full">
-            <div className="py-0.5 flex justify-start items-center gap-2 w-full">
-              <div className="flex flex-col gap-4 w-full">
-                <div className="date-picker-container">
-                  <DateTimePickerComponent
-                    defaultValue={today(getLocalTimeZone())}
-                    minValue={today(getLocalTimeZone())}
-                    hideTimeZone={false}
-                    showMonthAndYearPickers={false}
-                    label="Start"
-                    variant="bordered"
-                    labelPlacement="outside-left"
-                    color="primary"
-                  />
-                </div>
-                <div className="date-picker-container">
-                  <DateTimePickerComponent
-                    defaultValue={today(getLocalTimeZone())}
-                    minValue={today(getLocalTimeZone())}
-                    hideTimeZone={false}
-                    showMonthAndYearPickers={false}
-                    label="End"
-                    variant="bordered"
-                    labelPlacement="outside-left"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div className="w-full p-4 bg-gray-200/10 rounded-3xl flex flex-col gap-2">
+      {/* Header */}
+      <div className="flex items-center gap-2">
+        <Calendar className="w-5 h-5 text-white" />
+        <h2 className="text-white text-base font-medium font-['Poppins']">
+          Event Date & Time
+        </h2>
       </div>
-      <style jsx>{`
-        .date-picker-container {
-          width: 100%;
-          display: flex;
-        }
-        .date-picker-container :global(.heroui-datepicker) {
-          width: 100%;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
-        .date-picker-container :global(.heroui-datepicker label) {
-          color: #a0aec0;
-          flex-shrink: 0;
-        }
-        .date-picker-container :global(.heroui-datepicker > div:last-child) {
-          flex-grow: 1;
-          display: flex;
-          justify-content: flex-end;
-          gap: 0.5rem;
-        }
-        .date-picker-container :global(.heroui-datepicker input) {
-          text-align: right;
-        }
-      `}</style>
+
+      {/* Start Row */}
+      <div className="flex items-start justify-between">
+        <span className="text-gray-400 font-medium font-['Poppins']">
+          Start
+        </span>
+        <DateTimePickerComponent
+          defaultValue={currentDateTime}
+          minValue={currentDateTime}
+          hideTimeZone={false}
+          showMonthAndYearPickers={false}
+          variant="bordered"
+          label="" // label is handled externally
+          labelPlacement="outside-left"
+        />
+      </div>
+
+      {/* End Row */}
+      <div className="flex items-start justify-between">
+        <span className="text-gray-400 font-medium font-['Poppins']">End</span>
+        <DateTimePickerComponent
+          defaultValue={currentDateTime}
+          minValue={currentDateTime}
+          hideTimeZone={false}
+          showMonthAndYearPickers={false}
+          variant="bordered"
+          label=""
+          labelPlacement="outside-left"
+        />
+      </div>
     </div>
   );
 }
