@@ -17,8 +17,8 @@ interface DateTimePickerProps {
   hideTimeZone: boolean;
   showMonthAndYearPickers: boolean;
   variant: "bordered" | "flat" | "faded" | "underlined";
-  label: string;
-  labelPlacement: "outside" | "inside" | "outside-left";
+  label?: string;
+  labelPlacement?: "outside" | "inside" | "outside-left";
   className?: string;
 }
 
@@ -28,12 +28,16 @@ export default function DateTimePickerComponent({
   hideTimeZone,
   showMonthAndYearPickers,
   variant,
-  label,
-  labelPlacement,
+  label: _label,
+  labelPlacement: _labelPlacement,
   className = "",
 }: DateTimePickerProps) {
   const todayDate = today(getLocalTimeZone());
   const { locale } = useLocale();
+
+  // Mark unused optional props as used to avoid linter warnings
+  void _label;
+  void _labelPlacement;
 
   const disabledRanges: [DateValue, DateValue][] = [
     [todayDate, todayDate.add({ days: 5 })],
@@ -46,22 +50,22 @@ export default function DateTimePickerComponent({
       ([start, end]) => date.compare(start) >= 0 && date.compare(end) <= 0
     );
 
+  const baseInputStyles =
+    "bg-transparent border-none outline-none shadow-none text-neutral-200 text-right font-['Poppins']";
+
   return (
-    <div className={`flex items-center w-full ${className}`}>
+    <div className={`flex items-center gap-2 ${className}`}>
       {/* Date Picker */}
       <DatePicker
         defaultValue={defaultValue}
         minValue={minValue}
         hideTimeZone={hideTimeZone}
         showMonthAndYearPickers={showMonthAndYearPickers}
-        label={label}
         variant={variant}
-        labelPlacement={labelPlacement}
         isDateUnavailable={isDateUnavailable}
         classNames={{
-          base: "rounded-md bg-gray-700 px-2 py-1",
-          input:
-            "text-white text-right font-['Poppins'] bg-transparent placeholder-gray-400",
+          base: "w-36 flex items-center bg-transparent border-none",
+          input: `${baseInputStyles} placeholder-gray-500 truncate`,
           selectorButton: "p-2",
           selectorIcon: "w-5 h-5 text-white",
         }}
@@ -71,12 +75,11 @@ export default function DateTimePickerComponent({
       <TimeInput
         defaultValue={defaultValue}
         minValue={minValue}
+        hideTimeZone={hideTimeZone}
         variant={variant}
-        // we already used the external label, so leave this blank:
-        label=""
         classNames={{
-          base: "ml-2 rounded-md bg-gray-700 px-2 py-1",
-          segment: "text-white font-['Poppins']",
+          base: "w-16 flex items-center bg-transparent border-none",
+          segment: "text-neutral-200 font-['Poppins']",
         }}
       />
     </div>

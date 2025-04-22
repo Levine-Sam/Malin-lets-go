@@ -20,33 +20,39 @@ export default function EventTimeCard() {
       </div>
 
       {/* Start Row */}
-      <div className="flex items-start justify-between">
+      <div className="self-stretch flex items-center justify-between">
         <span className="text-gray-400 font-medium font-['Poppins']">
           Start
         </span>
-        <DateTimePickerComponent
-          defaultValue={currentDateTime}
-          minValue={currentDateTime}
-          hideTimeZone={false}
-          showMonthAndYearPickers={false}
-          variant="bordered"
-          label="" // label is handled externally
-          labelPlacement="outside-left"
-        />
+        <div className="flex items-center gap-1">
+          <DateTimePickerComponent
+            defaultValue={currentDateTime}
+            minValue={currentDateTime}
+            hideTimeZone={true}
+            showMonthAndYearPickers={false}
+            variant="bordered"
+          />
+          <span className="text-gray-400 text-xs font-medium font-['Poppins']">
+            EDT
+          </span>
+        </div>
       </div>
 
       {/* End Row */}
-      <div className="flex items-start justify-between">
+      <div className="self-stretch flex items-center justify-between">
         <span className="text-gray-400 font-medium font-['Poppins']">End</span>
-        <DateTimePickerComponent
-          defaultValue={currentDateTime}
-          minValue={currentDateTime}
-          hideTimeZone={false}
-          showMonthAndYearPickers={false}
-          variant="bordered"
-          label=""
-          labelPlacement="outside-left"
-        />
+        <div className="flex items-center gap-1">
+          <DateTimePickerComponent
+            defaultValue={currentDateTime}
+            minValue={currentDateTime}
+            hideTimeZone={true}
+            showMonthAndYearPickers={false}
+            variant="bordered"
+          />
+          <span className="text-gray-400 text-xs font-medium font-['Poppins']">
+            EDT
+          </span>
+        </div>
       </div>
     </div>
   );

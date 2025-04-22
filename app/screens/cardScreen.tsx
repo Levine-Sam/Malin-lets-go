@@ -1,6 +1,11 @@
 import React from "react";
 import { Button } from "@heroui/react";
 import EventTimeCard from "../components/admin/EventTimeCard";
+import AboutEventCard from "../components/admin/AboutEventCard";
+import EventLocationCard from "../components/admin/EventLocationCard";
+import TicketCard from "../components/admin/TicketCard";
+import PerksCard from "../components/admin/PerksCard";
+
 export default function CardScreen() {
   // Empty dependency array ensures this runs only on mount and unmount
 
@@ -46,7 +51,17 @@ export default function CardScreen() {
             <div className="self-stretch text-neutral-100 text-5xl font-medium font-['Poppins'] leading-[72px] tracking-wide">
               Event Name
             </div>
-            <EventTimeCard />
+            <div className="self-stretch inline-flex justify-start items-start gap-10 mt-8">
+              <div className="w-72 inline-flex flex-col justify-start items-start gap-10">
+                <EventTimeCard />
+                <EventLocationCard />
+                <TicketCard />
+              </div>
+              <div className="flex-1 inline-flex flex-col justify-start items-start gap-10">
+                <AboutEventCard />
+                <PerksCard />
+              </div>
+            </div>
           </div>
         </div>
       </div>
